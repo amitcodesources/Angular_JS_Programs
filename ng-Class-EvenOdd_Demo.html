@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-Class-EvenOdd</title>
+    <script src="Scripts/angular.js"></script>
+    <style>
+        .oddstyle{
+            background-color: dimgray;
+            color: white;
+        }
+        .evenstyle{
+            background-color: black;
+            color: white;
+        }
+        th{
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body ng-app>
+        <div ng-init="cities=['Delhi', 'Hyderabad', 'Mumbai', 'Chennai', 'Bengaluru']">
+            <ol>
+                <li ng-repeat="item in cities">
+                <span ng-class-odd="'oddstyle'" ng-class-even="'evenstyle'">{{item}}</span>
+                </li>
+            </ol>
+        </div>
+        <div ng-init="products=[{id:111, Name:'Samsung TV', Price:12000},
+                                {id:222, Name:'Washing Machine', Price:15000},
+                                {id:333, Name:'Iron', Price:2500},
+                                {id:444, Name:'Food Processor', Price:5000}]">
+            <table width="400" border="1">
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <tr ng-repeat="item in products" ng-class-odd="'oddstyle'" ng-class-even="'evenstyle'">
+                    <td>{{item.id}}</td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Price}}</td>
+                </tr>
+            </table>
+        </div>
+</body>
+</html>

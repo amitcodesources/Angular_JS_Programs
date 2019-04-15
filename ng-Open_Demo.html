@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-Open</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+    </script>
+</head>
+<body ng-app="DemoApp">
+        <input type="checkbox" ng-model="showComments">Show Comments
+        <dialog ng-open="showComments">
+            <form>
+                <label>Yours Comments:</label>
+                <textarea></textarea>
+                <br>
+                <button>Post Comments</button>
+            </form>
+        </dialog>
+        <h2>Table Of Contents</h2>
+        <table width="600" border="1">
+            <tr height="300">
+                <td height="200">
+                    <ol>
+                        <li><input type="checkbox" ng-model="js">JavaScript</li>
+                        <li><input type="checkbox" ng-model="an">AngularJS</li>
+                    </ol>
+                </td>
+                <td height="400">
+                    <details ng-open="js">
+                        <summary>JavaScript</summary>
+                        <ul>
+                            <li>Variables</li>
+                            <li>Datatypes</li>
+                            <li>Operators</li>
+                        </ul>
+                    </details>
+                    <details ng-open="an">
+                        <summary>AngularJS</summary>
+                        <ul>
+                            <li>Filters</li>
+                            <li>Directives</li>
+                            <li>Services</li>
+                        </ul>
+                    </details>
+                </td>
+            </tr>
+        </table>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.txtID = "";
+            $scope.txtName = "";
+            $scope.txtPrice = "";
+            $scope.txtMfd = "";
+            $scope.stock = "";
+            $scope.lstcity = "";
+
+            $scope.IsDetailsVisible = false;
+            $scope.IsRegisterVisible = true;
+            
+            $scope.IsRegister = function () {
+                $scope.IsDetailsVisible = true;
+                $scope.IsRegisterVisible = false;
+
+                var Product = {
+                    pId: $scope.txtID,
+                    pName: $scope.txtName,
+                    pPrice: $scope.txtPrice,
+                    pMfd: $scope.txtMfd,
+                    IsInStock: $scope.stock,
+                    ShippedTo: $scope.lstcity
+                };
+                $scope.product = Product;
+            }
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        <fieldset ng-show="IsRegisterVisible">
+            <legend>Register Product</legend>
+            <dl>
+                <dt>Product ID</dt>
+                <dd><input type="text" ng-model="txtID"></dd>
+                <dt>Product Name</dt>
+                <dd><input type="text" ng-model="txtName"></dd>
+                <dt>Product Price</dt>
+                <dd><input type="text" ng-model="txtPrice"></dd>
+                <dt>Product Manufactured</dt>
+                <dd><input type="text" ng-model="txtMfd"></dd>
+                <dt>Is In Stock</dt>
+                <dd>
+                    <input type="radio" value="Available" ng-model="stock" name="stock">Yes
+                    <input type="radio" value="Out Of Stock" ng-model="stock" name="stock">No
+                </dd>
+                <dt>Shipped To</dt>
+                <dd>
+                    <select ng-model="lstcity">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                    </select>
+                </dd>
+                <br>
+                <button ng-click="IsRegister()">Register</button>
+            </dl>
+        </fieldset><br>
+
+        <fieldset ng-show="IsDetailsVisible">
+            <legend>Product Details</legend>
+            <dl>
+                <dt>Product ID</dt>
+                <dd>{{product.pId}}</dd>
+                <dt>Product Name</dt>
+                <dd>{{product.pName}}</dd>
+                <dt>Product Price</dt>
+                <dd>{{product.pPrice}}</dd>
+                <dt>Product Manufactured</dt>
+                <dd>{{product.pMfd}}</dd>
+                <dt>Is In Stock</dt>
+                <dd>{{product.IsInStock}}</dd>
+                <dt>Shipped To</dt>
+                <dd>{{product.ShippedTo}}</dd>
+            </dl>
+        </fieldset>
+</body>
+</html>

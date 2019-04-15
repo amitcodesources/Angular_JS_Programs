@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Share Data Btwn Ctrl</title>
+	<script src="Scripts/angular.js"></script>
+	<script>
+		var app = angular.module('m1', []);
+		app.service('s1', function(){
+			this.name;
+		})
+		app.controller('c1', function($scope, s1){
+			s1.name = 'Amit';
+		});
+		app.controller('c2', function($scope, s1){
+			$scope.name = s1.name;
+		});
+	</script>
+</head>
+<body ng-app="m1">
+		<div ng-controller='c1'>
+			{{name}}
+		</div>
+		<div ng-controller='c2'>
+			{{name | uppercase}}
+		</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-bind_normalization Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <style>
+        dt{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body ng-app>
+        <div>
+            Your Name: <input type="text" ng-model="uname"><br><br>
+            <dl>
+                <dt>ng-bind</dt>
+                <dd ng-bind="uname"></dd>
+                <dt>ng:bind</dt>
+                <dd ng:bind="uname"></dd>
+                <dt>ng_bind</dt>
+                <dd ng_bind="uname"></dd>
+                <dt>x-ng-bind</dt>
+                <dd x-ng-bind="uname"></dd>
+                <dt>data-ng-bind</dt>
+                <dd data-ng-bind="uname"></dd>
+            </dl>
+        </div>
+</body>
+</html>

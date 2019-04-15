@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-Cut_Copy_Paste</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+        <input type="text" ng-init="msg=''" ng-copy="msg='Code Copied'" ng-cut="msg='Removed and Copied to Clipboard'" ng-paste="msg='Code Inserted'" ng-model="txtcode">
+        <span>{{msg}}</span>
+</body>
+</html>

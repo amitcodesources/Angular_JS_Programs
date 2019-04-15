@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter_Demo_Sorting_Type2</title>
+    <link rel="stylesheet" href="CSS/tab.css">
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.Products=[{Id:1, Name: 'Samsung TV', Price:45000, Mfd: new Date('February 12, 2015')},
+                {Id:2, Name: 'Mobile', Price:12000, Mfd: new Date('2012/05/12')},
+                {Id:3, Name: 'Laptop', Price:60000, Mfd: new Date('Mar 25, 2013')},
+                {Id:4, Name: 'Shoe', Price:4500, Mfd: new Date('2018/03/20')},
+                {Id:5, Name: 'Boot', Price:6000, Mfd: new Date('2018/04/25')}];
+            $scope.fieldName=Id;
+            $scope.reverse=false;
+            $scope.sort=function (fieldName) {
+                $scope.fieldName=fieldName;
+                $scope.reverse= ($scope.fieldName === fieldName){
+                    $scope.reverse=$scope.reverse;
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+<br><br><br><br>
+Order By : <select ng-model="sortCol">
+    <option value="Name">Name ASC</option>
+    <option value="Name">Name ASC</option>
+    <option value="Name">Name ASC</option>
+    <option value="Name">Name ASC</option>
+</select>
+<table width="500" border="1" align="center">
+    <th><a href="#" ng-click="sort('Id')">Product ID</a></th>
+    <th><a href="#" ng-click="sort('Name')">Product Name</a></th>
+    <th><a href="#" ng-click="sort('Price')">Product Price</a></th>
+    <th><a href="#" ng-click="sort('Mfd')">Product Manufactured</a></th>
+    <tr ng-repeat="item in Products | orderBy:fieldName:reverse">
+        <td>{{item.Id}}</td>
+        <td>{{item.Name | uppercase}}</td>
+        <td>{{item.Price | currency:'&#8377;':2}}</td>
+        <td>{{item.Mfd | date:'dd/MM/yyyy'}}</td>
+    </tr>
+</table><br>
+</body>
+</html>

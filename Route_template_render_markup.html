@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Route_template_render_markup</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script>
+        var app=angular.module('DemoApp', ['ngRoute']);
+        app.config(function ($routeProvider) {
+           $routeProvider
+        .when('/',{
+                   template:'<h2>Tutorial Home</h2>'
+                })
+        .when('/js',{
+                template:'<h2>Java Script</h2><ol><li>Variables</li><li>DataTypes</li></ol>'
+            })
+        .when('/ng',{
+                template:'<h2>Angular JS</h2><ol><li>Services</li><li>Directives</li></ol>'
+            })
+        });
+        app.controller('HomeController', function ($scope) {
+
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        <table width="600" border="1" align="center">
+            <tr>
+                <td>
+               <ul>
+                   <li><a href="#!js">Java Sxript</a></li>
+                   <li><a href="#!ng">Angular JS</a></li>
+               </ul>
+                </td>
+                <td>
+                    <ng-view></ng-view>
+                </td>
+            </tr>
+        </table>
+</body>
+</html>

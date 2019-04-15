@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-change_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.index=0;
+            $scope.CarImage='Cars/1.jpg';
+            $scope.CarName='Ferrari';
+            $scope.Cars=['Cars/1.jpg', 'Cars/2.jpg', 'Cars/3.jpg', 'Cars/4.jpg', 'Cars/5.jpg'];
+            $scope.CarNames=['Ferrari', 'BMW', 'Chevrolet', 'MarutiSuzuki', 'VolksWagen'];
+            $scope.CarChange=function () {
+                $scope.CarImage=$scope.Cars[$scope.index];
+                $scope.CarName=$scope.CarNames[$scope.index];
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <table width="600" cellpadding="5" cellspacing="5" border="2">
+        <tr>
+            <td align="center">{{CarName}}</td>
+        </tr>
+        <tr>
+            <td><img ng-src="{{CarImage}}" width="600" height="300"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                1<input type="range" ng-model="index" min="0" max="4" value="0" ng-change="CarChange()">4
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

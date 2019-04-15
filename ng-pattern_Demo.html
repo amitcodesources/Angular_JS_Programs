@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-pattern_Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+        <form name="frmHome">
+            Mobile No:
+            <input type="text" ng-model="txtMobile" name="txtMobile" ng-pattern="/\+91[0-9]\d{9}$/">
+            <span ng-show="frmHome.txtMobile.$invalid">Invalid Number</span>
+        </form>
+</body>
+</html>

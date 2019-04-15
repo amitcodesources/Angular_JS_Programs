@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service_log_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+
+        myApp.controller("myController", function ($log) {
+
+            $log.log('This is log.');
+            $log.error('This is error.');
+            $log.info('This is info.');
+            $log.warn('This is warning.');
+            $log.debug('This is debugging.');
+
+        });
+    </script>
+</head>
+<body ng-app="myApp" >
+<div ng-controller="myController">
+    <p>Please check the browser console for the logging information.</p>
+</div>
+</body>
+</html>

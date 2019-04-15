@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service_location_search_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope, $location) {
+            $location.search('search', 'footware');
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+
+</body>
+</html>

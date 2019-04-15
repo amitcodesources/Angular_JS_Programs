@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service_location_hash_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope, $location, $anchorscroll) {
+            $scope.GetJS=function () {
+                $location.hash('js');
+            }
+            $scope.GetJQ=function () {
+                $location.hash('jq');
+            }
+            $scope.Back=function () {
+                $location.hash('toc');
+            }
+            $scope.Details=function () {
+                $scope.msg=$location.hash();
+                switch ($scope.msg){
+                    case 'js':
+                        $scope.msg += "Java Script";
+                        break;
+                    case 'jq':
+                        $scope.msg += "JQuery";
+                        break;
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <h1 id="toc">table Of Contents</h1>
+    <ol>
+        <li><a href="" ng-click="GetJS()">Java Script</a></li>
+        <li><a href="" ng-click="GetJQ()">JQuery</a></li>
+    </ol><br>
+    <div>
+        <button ng-click="Details()">Get Recently Viewed Topics</button><br>
+        {{msg}}
+    </div>
+    <h2 id="js">JavaScript</h2>
+    <a href="" ng-click="Back()"><img ng-src="Images/backward.jpg" width="50" height="50"></a>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aperiam blanditiis cupiditate distinctio earum error illum ipsa laborum maiores molestias nam, odio perferendis perspiciatis quia quidem quisquam quod ratione reiciendis repudiandae saepe sed soluta temporibus vel veniam voluptas voluptate. Blanditiis consequatur harum iusto necessitatibus odio, quo ratione soluta temporibus.</p>
+
+    <h2 id="jq">JQuery</h2>
+    <a href="" ng-click="Back()"><img ng-src="Images/backward.jpg" width="50" height="50"></a>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aperiam blanditiis cupiditate distinctio earum error illum ipsa laborum maiores molestias nam, odio perferendis perspiciatis quia quidem quisquam quod ratione reiciendis repudiandae saepe sed soluta temporibus vel veniam voluptas voluptate. Blanditiis consequatur harum iusto necessitatibus odio, quo ratione soluta temporibus.</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-form_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            var Users=[
+                {Name:'John', Email:'john@gmail.com'},
+                {Name:'David', Email:'david@gmail.com'}
+            ];
+            $scope.formData={};
+            $scope.formData.Users=Users;
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <form name="frmHome">
+        <input type="checkbox" ng-model="editUser">Edit User Details
+        <input type="checkbox" ng-model="editAdmin">Edit Admin Details
+        <br>
+        <ng-form name="UserForm" ng-show="editUser">
+            <h2>User Form</h2>
+            <div ng-repeat="user in formData.Users">
+                <label>{{user.Name}} Email</label>
+                <input type="email" name="txtEmail" ng-model="txtEmail">
+            </div>
+            <span ng-show="UserForm.txtEmail.$invalid">Invalid User</span>
+        </ng-form>
+        <ng-form name="AdminForm" ng-show="editAdmin">
+            <h2>Admin Form</h2>
+             Admin Name:<input type="text" name="txtName" ng-model="txtName" required>
+            <span ng-show="AdminForm.txtName.$invalid">Admin Name Required</span>
+        </ng-form>
+    </form>
+</body>
+</html>

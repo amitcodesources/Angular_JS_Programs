@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamically_Enable_Disable_By_ng-disabled</title>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.UserInfo = [{UserName:'Raj', CardNumber:5555666677778888, CVV:102, Expiry:2020}];
+            $scope.disableCVV=true;
+            $scope.disableExpiry=true;
+            $scope.disableName=true;
+            $scope.disablePay=true;
+            $scope.txtNumber="";
+            $scope.txtCVV="";
+            $scope.lstYear="";
+            $scope.txtName="";
+            $scope.CheckCardNumber=function () {
+                if($scope.txtNumber == $scope.UserInfo[0].CardNumber)
+                {
+                    $scope.disableCVV=false;
+                }
+                else {
+                    $scope.disableCVV=true;
+                }
+            };
+            $scope.CheckCVV=function () {
+                if($scope.txtCVV == $scope.UserInfo[0].CVV)
+                {
+                    $scope.disableExpiry=false;
+                }
+                else {
+                    $scope.disableExpiry=true;
+                }
+            };
+            $scope.CheckYear=function () {
+                if($scope.lstYear == $scope.UserInfo[0].Expiry)
+                {
+                    $scope.disableName=false;
+                }
+                else {
+                    $scope.disableName=true;
+                }
+            };
+            $scope.CheckName=function () {
+                if($scope.txtName == $scope.UserInfo[0].UserName)
+                {
+                    $scope.disablePay=false;
+                }
+                else {
+                    $scope.disablePay=true;
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+<form name="frmHome">
+            <fieldset>
+                <legend>Payment Details</legend>
+                <dl>
+                    <dt>Card Number</dt>
+                    <dd><input type="text" ng-model="txtNumber" ng-keyup="CheckCardNumber()"></dd>
+                    <dt>CVV Number</dt>
+                    <dd><input type="text" ng-model="txtCVV" size="3" ng-disabled="disableCVV" ng-keyup="CheckCVV()"></dd>
+                    <dt>Expiry Year</dt>
+                    <dd>
+                        <select ng-model="lstYear" ng-disabled="disableExpiry" ng-change="CheckYear()">
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                        </select>
+                    </dd>
+                    <dt>Name On Card</dt>
+                    <dd><input type="text" ng-model="txtName" ng-disabled="disableName" ng-keyup="CheckName()"></dd>
+                </dl>
+                <br>
+                <button ng-disabled="disablePay">Pay</button>
+            </fieldset>
+        </form>
+</body>
+</html>

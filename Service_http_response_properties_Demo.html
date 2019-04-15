@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service_http_response_properties_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope, $http) {
+            $http.get('Home.html')
+                .then( function (response) {
+                    $scope.code= response.status;
+                    $scope.text= response.statusText;
+                    $scope.data= response.data;
+                    });
+            function (response) {
+                $scope.text = response.statusText;
+            }
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+</body>
+</html>

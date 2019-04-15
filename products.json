@@ -1,0 +1,7 @@
+[
+  {"Id":1,"Name":"Samsung TV","Price":45000},
+  {"Id":2, "Name":"Nike Casuals", "Price":3500},
+  {"Id":3, "Name":"Lee Cooper Boot", "Price":4500},
+  {"Id": 4, "Name":"Mobile", "Price":12000},
+  {"Id":5, "Name":"Laptop", "Price":60000}
+]

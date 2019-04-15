@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-reapeat Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.Categories =[{Name:'Electronics', Products:['Samsung TV', 'Mobile Phone']},
+                                {Name:'Shoes', Products:['Nike Shoe', 'Lee Cooper Shoe']}
+                ];
+        })
+    </script>
+</head>
+    <body ng-app="DemoApp" ng-controller="HomeController">
+        <h2>Categories</h2>
+        <ol>
+            <li ng-repeat="category in Categories">
+                {{category.Name}}
+                <ul>
+                    <li ng-repeat="product in category.Products">
+                        {{product}}
+                    </li>
+                </ul>
+            </li>
+        </ol>
+    </body>
+</html>

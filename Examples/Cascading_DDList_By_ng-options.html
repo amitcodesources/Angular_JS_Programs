@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cascading_DDList_By_ng-options</title>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.Categories = ['Electronics', 'Shoes'];
+            $scope.Electronics = ['Samsung TV', 'Mobile'];
+            $scope.Shoes = ['Nike Casuals', 'Lee Cooper Boot'];
+            $scope.ShoppingProducts=[
+                {Name: 'Samsung TV', Price:45000, Photo:'Images/tv.jpg'},
+                {Name: 'Mobile', Price:12000, Photo:'Images/mobile.jpg'},
+                {Name: 'Nike Casuals', Price:4000, Photo:'Images/shoe-Nike.jpg'},
+                {Name: 'Lee Cooper Boot', Price:4500, Photo:'Images/shoe-lc.jpg'}
+            ];
+            $scope.lstCategories="";
+            $scope.lstProducts="";
+            $scope.Products="";
+            $scope.ProductName="";
+            $scope.ProductPrice="";
+            $scope.ProductImage="";
+            $scope.SelectCategory = function () {
+                switch ($scope.lstCategories){
+                    case "Electronics":
+                        $scope.Products=$scope.Electronics;
+                        break;
+                    case "Shoes":
+                        $scope.Products=$scope.Shoes;
+                        break;
+                }
+            };
+            function GetDetails(index) {
+                $scope.ProductName=$scope.ShoppingProducts[index].Name;
+                $scope.ProductPrice=$scope.ShoppingProducts[index].Price;
+                $scope.ProductImage=$scope.ShoppingProducts[index].Photo;
+            };
+            $scope.SelectProducts=function () {
+                switch ($scope.lstProducts){
+                    case 'Samsung TV':
+                        GetDetails(0);
+                        break;
+                    case 'Mobile':
+                        GetDetails(1);
+                        break;
+                    case 'Nike Casuals':
+                        GetDetails(2);
+                        break;
+                    case 'Lee Cooper Boot':
+                        GetDetails(3);
+                        break;
+                }
+            };
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+<table width="400" cellspacing="4" cellpadding="4" border="2" align="center">
+    <tr>
+        <td align="center">Amazon Shopping Cart</td>
+    </tr>
+    <tr>
+        <td align="center">
+            <select ng-model="lstCategories" ng-change="SelectCategory()" ng-options="item for item in Categories"></select>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <select ng-model="lstProducts" ng-change="SelectProducts()" ng-options="item for item in Products"></select>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <img ng-src="{{ProductImage}}" width="100" height="100" alt="Product Preview"><br>
+            Product Name: {{ProductName}}<br>
+            Product Price: {{ProductPrice}}
+        </td>
+    </tr>
+</table>
+</body>
+</html>

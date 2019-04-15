@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-required_Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+        <form name="frmHome">
+        <fieldset>
+            <legend>User Details</legend>
+            <dl>
+                <dt>User Name</dt>
+                <dd><input type="text" name="txtUname" ng-model="txtUname" ng-required="true"></dd>
+                <dt>Password</dt>
+                <dd><input type="text" name="txtPwd" ng-model="txtPwd" ng-required="true"></dd>
+            </dl>
+            <button>Submit</button>
+            <br><br>
+            <div>
+                <span ng-if="frmHome.txtUname.$error.required">UserName Required</span>
+                <span ng-if="frmHome.txtPwd.$error.required">Password Required</span>
+            </div>
+        </fieldset>
+        </form>
+</body>
+</html>

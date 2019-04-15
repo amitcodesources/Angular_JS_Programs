@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-submit_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.detailstab=false;
+            $scope.SubmitData=function (user) {
+                $scope.UserDetails=user;
+                $scope.detailstab=true;
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+<div align="center">
+        <form ng-submit="SubmitData(user)">
+            Name: <input type="text" name="txtName" ng-model="user.Name">
+            <br><br>
+            Age: <input type="text" name="txtAge" ng-model="user.Age">
+            <br><br>
+            <input type="submit" value="Submit">
+            <br><br><br>
+            <div ng-show="detailstab">
+                Name: {{UserDetails.Name}}<br>
+                Age: {{UserDetails.Age}}
+            </div>
+        </form>
+</div>
+</body>
+</html>

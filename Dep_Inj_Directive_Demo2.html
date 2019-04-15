@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dep_Inj_Directive_Demo2</title>
+    <style type="text/css">
+        table, tr, td{
+            width: 200px
+            border: 1px solid blue;        
+        }
+    </style>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.directive('ngProduct', function () {
+            var directive = [];
+            directive.template = "<table><tr><td>ProductID</td><td>{{product.Id}}</td></tr><tr><td>Name</td><td>{{product.Name}}</td></tr><tr><td>Price</td><td>{{product.Price}}</td></tr></table>";
+            directive.restrict = "E";
+            directive.scope = {
+                product:'='
+            };
+            return directive;
+        });
+
+        app.controller('HomeController', function ($scope) {
+            $scope.tv = {Id:1, Name:"SamsungTV", Price:45000};
+            $scope.mobile = {Id:2, Name:"Mobile", Price:12000};
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+<ng-product product="tv"></ng-product>
+<br>
+<ng-product product="mobile"></ng-product>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-mousemove_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.Animate = function (event) {
+                $scope.imagePosition = {
+                    "position": 'fixed',
+                    "top": event.clientY + "px",
+                    "left": event.clientX + "px"
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController" ng-mousemove="Animate($event)">
+<div style="height: 1000px">
+
+</div>
+    <img ng-src="Images/indian-flag.gif" ng-style="imagePosition">
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ang JS Form Inputs</title>
+	<style type="text/css">
+		input.ng-invalid.ng-dirty {
+          background-color: #FA787E;
+        }
+        input.ng-valid.ng-dirty {
+          background-color: #78FA89;
+        }
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('app', []);
+
+		app.controller('MainCtrl', function($scope, $compile) {
+		  'use strict';
+		    $scope.empList = [];
+		    $scope.addemp = {};
+		    $scope.saveEmp = function(){
+		      $scope.empList.push($scope.addemp);
+		      $scope.reset();
+		    };
+		    $scope.reset = function() {
+		      $scope.addemp = {};
+		      $scope.form.$setPristine();
+		    }
+		});
+	</script>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+
+	<form name="form" id="form" novalidate ng-submit="saveEmp()">
+            <div class="row">
+        <div class="col-lg-6">
+            <strong>Employee No</strong>
+        </div>
+        <div class="col-lg-6">
+            <input type="number" id="txtEmpId" ng-model="addemp.employeeid" required class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <strong>FirstName</strong>
+        </div>
+        <div class="col-lg-6">
+            <input type="text" id="txtfirstName" ng-model="addemp.firstname" required class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <strong>LastName</strong>
+        </div>
+        <div class="col-lg-6">
+            <input type="text" id="txtlastName" ng-model="addemp.lastname" required class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <strong>Department</strong>
+        </div>
+        <div class="col-lg-6">
+            <input type="text" id="txtDept" ng-model="addemp.department" required class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <strong>DOB</strong>
+        </div>
+        <div class="col-lg-6">
+            <input type="date" id="DTdob" ng-model="addemp.dateofbirth" required class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" ng-disabled="form.$invalid ">submit</button>
+        <button type="reset" ng-disabled="form.$pristine" ng-click="reset()">reset</button>
+    </div>
+        </form>
+        <p>form: {{addemp | json}}</p>
+        <p>empList: {{empList | json}}</p>
+        <p>Pristine: {{form.$pristine}}</p>
+        <p> <pre>Errors: {{form.$error | json}}</pre></p>
+
+</body>
+</html>

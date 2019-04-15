@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>$Broadcast $emit $on</title>
+	<script src="scripts/angular.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('m1', []);
+		app.controller("c1", function($scope){
+			$scope.msg = "Welcome Amit";
+		});
+	</script>
+</head>
+<body ng-app="m1" ng-controller="c1">
+	<h1>{{msg}}</h1>
+</body>
+</html>

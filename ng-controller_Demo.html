@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controller Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.msg = "Home Page";
+        })
+        app.controller('ContactController', function ($scope) {
+            $scope.msg = "Contact US";
+            var address = "NareshIT | HYD | hr@nareshit.in";
+            $scope.address = address;
+        })
+    </script>
+</head>
+<body ng-app="DemoApp">
+    <div ng-controller="HomeController">
+        <h2>{{msg}}</h2>
+    </div>
+    <div ng-controller="ContactController">
+        <h2>{{msg}}</h2>
+        <address>
+                {{address}}
+        </address>
+    </div>
+</body>
+</html>

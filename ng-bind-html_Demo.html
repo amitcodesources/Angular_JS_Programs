@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-bind-html Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-sanitize.js"></script>
+    <script>
+        var app = angular.module('DemoApp', ['ngSanitize']);
+        app.controller('HomeController', function ($scope) {
+           var str="Welcome to AngularJS";
+           $scope.msg = str.fontcolor('green');
+           $scope.title = "<b>NareshIT | Home</b>";
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <div ng-bind-html="title"></div>
+    <div ng-bind-html="msg"></div>
+</body>
+</html>

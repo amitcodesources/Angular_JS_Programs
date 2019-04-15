@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API_Func_angular-equals</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.userdetails = {Name:'Amit', Password:'123'};
+            $scope.loginclick = function (user) {
+                var result=angular.equals(user, $scope.userdetails);
+                if(result == true){
+                    $scope.msg = "Login Success";
+                }
+                else {
+                    $scope.msg = "Invalid UserName/Password";
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+<fieldset>
+    <legend>Login</legend>
+    <form>
+        <dl>
+            <dt>UserName</dt>
+            <dd><input type="text" ng-model="user.Name"></dd>
+            <dt>Password</dt>
+            <dd><input type="text" ng-model="user.Password"></dd>
+        </dl>
+        <br>
+        <button ng-click="loginclick(user)">Login</button>
+    </form>
+</fieldset>
+<h3 align="center">{{msg}}</h3>
+</body>
+</html>

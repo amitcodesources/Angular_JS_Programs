@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Route_Param_Demo1</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script>
+        var app=angular.module('DemoApp', ['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/details/:Id/:Name/:Price',{
+                    templateUrl:'details.html'
+                })
+        });
+        app.controller('HomeController', function ($scope, $routeParams) {
+                $scope.Parameters = $routeParams;
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        <a href="#!details/1/Mobile/12000">Product Details</a>
+        <ng-view>v</ng-view>
+</body>
+</html>

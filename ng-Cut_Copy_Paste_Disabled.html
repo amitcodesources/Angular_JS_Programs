@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-Cut_Copy_Paste_Disabled</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.txtcode ='Hello World!!!';
+            $scope.copy = function () {
+                return false;
+            };
+            $scope.cut = function () {
+                return false;
+            };
+            $scope.paste = function () {
+                return false;
+            };
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        <input type="text" ng-model="txtcode" ng-copy="'return false'" ng-cut="cut()" ng-paste="paste()">
+</body>
+</html>

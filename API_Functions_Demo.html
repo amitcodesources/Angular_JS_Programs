@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API_Functions_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.msg = "Welcom To Angular JS";
+            $scope.titleupper = angular.uppercase($scope.msg);
+            $scope.titlelower = angular.lowercase($scope.msg);
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        UpperCase : {{titleupper}}<br>
+        LowerCase : {{titlelower}}
+</body>
+</html>

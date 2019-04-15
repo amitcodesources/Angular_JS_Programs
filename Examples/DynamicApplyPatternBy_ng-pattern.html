@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DynamicApplyPatternBy_ng-pattern</title>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.lstDetails="";
+            $scope.lblCaption="";
+            $scope.regExp="";
+            $scope.errormsg="";
+            $scope.CardDetails=function () {
+                switch ($scope.lstDetails){
+                    case 'CardNo':
+                        $scope.lblCaption='Card Number';
+                        $scope.regExp= /^[0-9]{16}$/;
+                        $scope.errormsg="Please enter 16 digit no";
+                        break;
+                    case 'CVV':
+                        $scope.lblCaption='CVV Number';
+                        $scope.regExp= /^[0-9]{3}$/;
+                        $scope.errormsg="Please enter 3 digit no";
+                        break;
+                    case 'OTP':
+                        $scope.lblCaption='OTP Number';
+                        $scope.regExp = /^[0-9]{6}$/;
+                        $scope.errormsg="Please enter 6 digit no";
+                        break;
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <form name="frmHome">
+        <fieldset>
+            <legend>Payment Details</legend>
+            <div align="center">
+                <select ng-model="lstDetails" ng-change="CardDetails()">
+                    <option value="CardNo">Card Number</option>
+                    <option value="CVV">CVV</option>
+                    <option value="OTP">OTP</option>
+                </select>
+            </div>
+            <br><br>
+            {{lblCaption}}<input type="text" ng-model="txtValue" name="txtValue" ng-pattern="regExp">
+            <span ng-show="frmHome.txtValue.$invalid">{{errormsg}}</span>
+        </fieldset>
+    </form>
+</body>
+</html>

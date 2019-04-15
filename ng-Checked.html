@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-Checked</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+        <fieldset>
+            <legend>Select Courses</legend>
+            <ol>
+                <input type="checkbox" ng-model="all">Select All<br>
+                <input type="checkbox" ng-model="js" ng-checked="all">JavaScript<br>
+                <input type="checkbox" ng-model="oc" ng-checked="all">Oracle<br>
+                <input type="checkbox" ng-model="an" ng-checked="all">AngularJS
+            </ol>
+        </fieldset>
+</body>
+</html>

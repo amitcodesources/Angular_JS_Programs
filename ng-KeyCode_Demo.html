@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-KeyCode_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.GetCode = function (event) {
+                $scope.keycode = event.keyCode;
+                $scope.charcode = event.charCode;
+                $scope.which = event.which;
+                $scope.shiftkey = event.shiftKey;
+                $scope.altkey = event.altKey;
+                $scope.ctrlKey = event.ctrlKey;
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <div align="center">
+            Your Text:
+            <input type="text" ng-model="txtchar" ng-keyup="GetCode($event)">
+            <br><br><br>
+            Key Code: {{keycode}}<br>
+            Char Code: {{charcode}}<br>
+            Which    : {{which}}<br>
+            Shift Key: {{shiftkey}}<br>
+            Alt Key: {{altkey}}<br>
+            Ctrl Key: {{ctrlKey}}<br>
+    </div>
+</body>
+</html>

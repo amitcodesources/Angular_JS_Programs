@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Serviec_http_get</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+
+        myApp.controller("myController", function ($scope, $http) {
+
+            var onSuccess = function (data, status, headers, config) {
+                $scope.data = data;
+            };
+
+            var onError = function (data, status, headers, config) {
+                $scope.error = status;
+            };
+
+            var promise = $http.get("Home.html");
+
+            promise.success(onSuccess);
+            promise.error(onError);
+
+        });
+    </script>
+</head>
+<body ng-app ="myApp">
+<div>
+    <div ng-controller="myController">
+        Response Data: {{data}} <br />
+        Error: {{error}}
+    </div>
+</div>
+
+</body>
+</html>

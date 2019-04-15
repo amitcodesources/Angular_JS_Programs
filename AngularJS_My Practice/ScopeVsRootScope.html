@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scope n RootScope Demo</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("Demo", []);
+		app.controller("HomeController", function($scope, $rootScope){
+			$scope.homemsg_s = "This is message from HomeController by scope";
+			$rootScope.homemsg_rs = "This is message from HomeController by rootScope";
+		})
+		app.controller("OfficeController", function($scope){
+			$scope.ofcmsg_s = "This is message from OfficeController";
+		})
+	</script>
+</head>
+<body ng-app="Demo">
+	<div ng-controller="HomeController">
+			Home Message RootScope : {{homemsg_rs}}	<br>
+			Home Message Scope : {{homemsg_s}} <br>
+			<!-- Office Message Scope : {{ofcmsg_s}} -->
+			Office Message Scope : 
+			<span style="color: red" ng-show="ofcmsg_s == undefined">
+				Here Office Message Is Undefined...
+			</span>
+	</div>
+	<br><br>
+	<div ng-controller="OfficeController">
+			Home Message RootScope : {{homemsg_rs}}	<br>
+			Office Message Scope : {{ofcmsg_s}} <br>
+			<!-- Home Message Scope : {{homemsg_s}} -->
+			Home Message Scope :
+			<span style="color: red" ng-show="homemsg_s == undefined">
+				Here Home Message Is Undefined...
+			</span>
+	</div>
+</body>
+</html>

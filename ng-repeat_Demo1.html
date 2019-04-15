@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-reapeat Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.cities = ['Delhi', 'HYD', 'Mumbai'];
+            $scope.products =[{id:1, Name:'Samsung TV', Price:120000},
+                {id:2, Name:'Nike Shoe', Price:2100}];
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        <h2>Cities</h2>
+        <ol>
+            <li ng-repeat="item in cities">{{item}}</li>
+        </ol>
+        <h2>Products Table</h2>
+        <table width="400" border="1">
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <tr ng-repeat="item in products">
+                <td>{{item.id}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Price}}</td>
+            </tr>
+        </table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-Style</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp',[]);
+        app.controller('HomeController', function ($scope) {
+            $scope.obj={
+                "background-color":$scope.lstbgcolors,
+                "color":$scope.txtcolor,
+                "text-align":$scope.align
+            };
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+<fieldset>
+    <legend>Select Effects</legend>
+    Background Color:
+    <select ng-model="lstbgcolors">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+    </select>
+    <br> <br>
+    Text Color:
+    <select ng-model="txtcolor">
+        <option value="white">White</option>
+        <option value="yellow">Yellow</option>
+    </select>
+    <br> <br>
+    Select Allignment:
+    <input type="radio" name="align" ng-model="align" value="left">Left
+    <input type="radio" name="align" ng-model="align" value="center">Center
+    <input type="radio" name="align" ng-model="align" value="right">Right
+</fieldset>
+<h2 ng-style="{'background-color':lstbgcolors, 'text-align':align, 'color':txtcolor}">Welcome To Angular JS</h2>
+</body>
+</html>

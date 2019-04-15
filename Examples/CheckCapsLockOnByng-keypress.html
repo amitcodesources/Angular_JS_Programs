@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CheckCapsLockOnByng-keypress</title>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.showMsg = false;
+            $scope.CheckStatus = function (event) {
+                if(event.keyCode >= 65 && event.keyCode <= 90){
+                    $scope.showMsg = true;
+                }
+                else {
+                    $scope.showMsg = false;
+                }
+            };
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <div align="center">
+        <b>Your Password</b>
+        <input type="text" ng-model="txtPwd" ng-keypress="CheckStatus($event)">
+        <div ng-show="showMsg">Caps Lock ON</div>
+    </div>
+</body>

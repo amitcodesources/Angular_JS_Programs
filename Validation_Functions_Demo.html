@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation_Functions_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module("DemoApp", []);
+        app.controller('HomeController', function ($scope) {
+            $scope.txtEmail="";
+            $scope.atpos="";
+            $scope.dotpos="";
+            $scope.msg="";
+            $scope.Verify=function () {
+                $scope.atpos=$scope.txtEmail.indexOf("@");
+                $scope.dotpos=$scope.txtEmail.lastIndexOf(".");
+
+                if($scope.atpos > 2 && ($scope.dotpos-$scope.atpos) > 2)
+                {
+                    $scope.msg="Invalid Email";
+                }
+                else {
+                    $scope.msg="Email Verified";
+                }
+            };
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <fieldset>
+        <legend>Email Address</legend>
+        <input type="text" ng-model="txtEmail">
+        <span>{{msg}}</span>
+        <button ng-click="Verify()">Verify</button>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-Blur_ng-Focus_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.msg = "";
+            $scope.txtName="";
+            $scope.ChangeCase = function () {
+                $scope.txtName = $scope.txtName.toUpperCase();
+                $scope.msg="";
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        Your Name:
+        <input type="text" ng-focus="msg='Block Letters Mandatory'" ng-blur="ChangeCase()" ng-model="txtName" placeholder="Block Letters">
+        <span>{{msg}}</span>
+</body>
+</html>

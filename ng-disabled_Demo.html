@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-disabled_Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+        <form name="frmHome">
+            <fieldset>
+                <legend>Login Details</legend>
+                <dl>
+                    <dt>UserName</dt>
+                    <dd><input type="text" name="txtName" ng-model="txtName" required></dd>
+                    <dt>Password</dt>
+                    <dd><input type="text" name="txtPwd" ng-model="txtPwd" required ng-minlength="4" ng-maxlength="8" ng-disabled="frmHome.txtName.$invalid"></dd>
+                </dl>
+                <br>
+                <button ng-disabled="frmHome.txtPwd.$invalid">Login</button>
+            </fieldset>
+        </form>
+</body>
+</html>

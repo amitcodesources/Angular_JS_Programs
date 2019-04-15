@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Route_templateurl_render_pviews</title>
+    <style>
+        thaed, tfoot{
+            background-color: red;
+            color: white;
+        }
+    </style>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script>
+        var app=angular.module('DemoApp', ['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/',{
+                    templateUrl:'PartialViews/home.html',
+                    controller:'HomeController'
+                })
+                .when('/home',{
+                    templateUrl:'PartialViews/home.html',
+                    controller:'HomeController'
+                })
+                .when('/about',{
+                    templateUrl:'PartialViews/about.html',
+                    controller:'AboutController'
+                })
+                .when('/contact',{
+                    templateUrl:'PartialViews/contact.html',
+                    controller:'ContactController'
+                })
+        });
+        app.controller('IndexController', function ($scope) {
+                $scope.indextitle = "NareshIT|Hyderabad";
+        });
+        app.controller('HomeController', function ($scope) {
+            $scope.title = "Home";
+            $scope.msg="Welcome To Home Page";
+        });
+        app.controller('AboutController', function ($scope) {
+            $scope.title = "About";
+            $scope.msg="About NareshIT";
+        });
+        app.controller('ContactController', function ($scope) {
+            $scope.title = "Contact";
+            $scope.msg="NareshIT|Hyderabad|hr@nareshit.com";
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="IndexController">
+<table width="800" border="1" align="center" cellspacing="4" cellpadding="4">
+    <thead>
+        <tr align="center">
+            <td colspan="2">{{indextitle}}</td>
+        </tr>
+    </thead>
+    <tbody>
+    <tr align="center" style="height: 400px">
+        <td style="height: 300px">
+            <ul>
+                <li><a href="#!home">Home</a></li>
+                <li><a href="#!about">About</a></li>
+                <li><a href="#!contact">Contact</a></li>
+            </ul>
+        </td>
+        <td width="500">
+            <ng-view></ng-view>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr align="center">
+        <td colspan="2">&copy;CopyRight 2018</td>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>

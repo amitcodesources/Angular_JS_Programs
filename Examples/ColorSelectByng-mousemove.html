@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ColorSelectByng-mousemove</title>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+                $scope.positioncolor=function (event) {
+                    $scope.X = event.clientX;
+                    $scope.Y = event.clientY;
+                    $scope.texteffect={};
+                    if($scope.X >= 375 && $scope.X <= 495 && $scope.Y >=8 && $scope.Y<=114){
+                        $scope.texteffect = {"color":'darkblue'};
+                        }
+                    if($scope.X >= 497 && $scope.X <= 618 && $scope.Y >=8 && $scope.Y<=114) {
+                        $scope.texteffect = {"color":'red'};
+                        }
+                    if($scope.X >= 620 && $scope.X <= 741 && $scope.Y >=8 && $scope.Y<=114) {
+                        $scope.texteffect = {"color":'yellow'};
+                        }
+                    if($scope.X >= 743 && $scope.X <= 865 && $scope.Y >=8 && $scope.Y<=114) {
+                        $scope.texteffect = {"color":'lightblue'};
+                        }
+                    if($scope.X >= 867 && $scope.X <= 985 && $scope.Y >=8 && $scope.Y<=114) {
+                        $scope.texteffect = {"color":'green'};
+                        }
+                    if($scope.X > 985 && $scope.X < 375 && $scope.Y >114) {
+                        $scope.texteffect = {"color":'black'};
+                    }
+                };
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <div align="center" ng-mousemove="positioncolor($event)">
+
+        <img ng-src="../Images/colors.jpg" ng-model="colImage">
+        <br><br>
+        X: {{X}}<br>
+        Y: {{Y}}<br>
+        <h1 ng-model="txtLine" ng-style="texteffect">Welcome To Angular JS</h1>
+    </div>
+</body>
+</html>

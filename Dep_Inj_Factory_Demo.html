@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dep_Inj_Factory_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="MyModules/FactoryApp.js"></script>
+    <script>
+        var app=angular.module('DemoApp', ['FactoryApp']);
+        app.controller('HomeController', function ($scope, FormatFactory, MathFactory) {
+            $scope.product = {Id:1, Name:"Samsung TV", Qty:2, Price:35000};
+            $scope.total = MathFactory.total($scope.product.Qty, $scope.product.Price);
+            $scope.caseName = FormatFactory.changecase($scope.product.Name);
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <h2>Product Details</h2>
+    <dl>
+        <dt>Product ID</dt>
+        <dd>{{product.Id}}</dd>
+        <dt>Product Name</dt>
+        <dd>{{caseName}}</dd>
+        <dt>Product Quantity</dt>
+        <dd>{{product.Qty}}</dd>
+        <dt>Product Price</dt>
+        <dd>{{product.Price}}</dd>
+        <dt>Product Total</dt>
+        <dd>{{total}}</dd>
+    </dl>
+</body>
+</html>

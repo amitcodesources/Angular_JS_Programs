@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Route_Param_FromJSON</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script>
+        var app=angular.module('DemoApp', ['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/details/:Id',{
+                    templateUrl:'details.html',
+                    controller:'DetailsController'
+                })
+        });
+        app.controller('HomeController', function ($scope, $http) {
+            $scope.products=[];
+            $http.get('api/products.json')
+                .then(function (response) {
+                    $scope.products = response.data;
+                });
+        });
+        app.controller('DetailsController', function ($scope, $routeParams) {
+            $scope.id = $routeParams.id;
+            for(var i=0; i<$scope.products.length; i++){
+                if($scope.products[i].Id = $scope.id){
+                    $scope.prodid = $scope.products[i].Id;
+                    $scope.prodname = $scope.products[i].Name;
+                    $scope.prodprice = $scope.products[i].Price;
+                    $scope.prodphoto = $scope.products[i].Photo;
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+<div align="center">
+    <table border="1">
+        <tr ng-repeat="item in products">
+            <td>{{item.Name}}</td>
+            <td><a href="#!details/{{item.Id}}">Product Details</a></td>
+        </tr>
+    </table>
+</div>
+<div>
+    <ng-view></ng-view>
+</div>
+</body>
+</html>

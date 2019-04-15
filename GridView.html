@@ -1,0 +1,22 @@
+<div>
+    <table width="500" border="1" align="center">
+        <th>Car ID</th>
+        <th>Name</th>
+        <th>Preview</th>
+        <th>Price</th>
+        <th>ShippedTo</th>
+        <tr ng-repeat="item in Cars">
+            <td>{{item.ID}}</td>
+            <td>{{item.Name}}</td>
+            <td><img ng-src="{{item.Photo}}" width="100" height="100"></td>
+            <td>{{item.Price}}</td>
+            <td>
+                <ol>
+                    <li ng-repeat="city in item.ShippedTo">
+                        {{city}}
+                    </li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+</div>

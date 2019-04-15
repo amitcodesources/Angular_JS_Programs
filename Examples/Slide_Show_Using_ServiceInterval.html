@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slide_Show_Using_ServiceInterval</title>
+    <style>
+        tr{
+            text-align: center;
+        }
+    </style>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope, $interval) {
+            $scope.Cars = ["Cars/1.jpg", "Cars/2.jpg", "Cars/3.jpg", "Cars/4.jpg", "Cars/5.jpg"];
+            $scope.CarNames = ["Ferrari", "BMW", "Chevrolet", "Suzuki", "Volkswagen"];
+            $scope.count = 0;
+            $scope.Car = "Cars/1.jpg";
+            $scope.title="Ferrari";
+            $scope.SlideShow = function () {
+                $scope.count++;
+                $scope.Car=$scope.CarNames[$scope.count] + "_" + "()Slide Show Running";
+                if($scope.Car=$scope.CarNames.length){
+                    $scope.count = 0;
+                }
+            };
+            var ShowCars = $interval(SlideShow, 4000);
+            $scope.PlayClick = function () {
+                var ShowCars = $interval(SlideShow, 4000);
+            };
+            $scope.PauseClick = function () {
+                $interval.cancel(ShowCars);
+                $scope.title = "Pause";
+            };
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        <table align="center" width="500" border="2" cellpadding="4" cellspacing="4">
+            <tr>
+                <td>{{title}}</td>
+            </tr>
+            <tr>
+                <td><img ng-src="{{Car}}" width="500" height="300"> </td>
+            </tr>
+            <tr>
+                <td>
+                    <button ng-click="PlayClick()"><font face="Weddings" size="6">4</font></button>
+                    <button ng-click="PauseClick()"><font face="Weddings" size="6">;</font></button>
+                </td>
+            </tr>
+        </table>
+</body>
+</html>

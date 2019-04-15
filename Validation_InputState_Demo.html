@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation_InputState_Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+<form name="frmHome" novalidate>
+    <fieldset>
+        <legend>Register</legend>
+        <dl>
+            <dt>User Name</dt>
+            <dd><input type="text" name="txtName" ng-model="txtName"></dd>
+        </dl>
+        <button>Submit</button>
+    </fieldset>
+    <br><br>
+    <fieldset>
+        <legend>Input State Validation</legend>
+        <dl>
+            <dt>Name Field Touched - $touched</dt>
+            <dd>{{frmHome.txtName.$touched}}</dd>
+            <dt>Name Field Untouched - $untouched</dt>
+            <dd>{{frmHome.txtName.$untouched}}</dd>
+            <dt>Name Field Not Modified Yet - $pristine</dt>
+            <dd>{{frmHome.txtName.$pristine}}</dd>
+            <dt>Name Field Modified - $dirty</dt>
+            <dd>{{frmHome.txtName.$dirty}}</dd>
+            <dt>Name Field Valid - $valid</dt>
+            <dd>{{frmHome.txtName.$valid}}</dd>
+            <dt>Name Field Invalid - $invalid</dt>
+            <dd>{{frmHome.txtName.$invalid}}</dd>
+        </dl>
+    </fieldset>
+</form>
+</body>
+</html>

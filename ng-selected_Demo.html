@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-selected_Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+        <fieldset>
+            <legend>Select Your City</legend>
+            Are You From Hyd?
+            <input type="checkbox" ng-model="hyd"><br><br>
+            <select ng-model="lstCities">
+                <option>Delhi</option>
+                <option ng-selected="hyd">Hyderabad</option>
+                <option>Mumbai</option>
+            </select>
+        </fieldset>
+</body>
+</html>

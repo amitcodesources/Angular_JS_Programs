@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API_Func_angular-copy</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.productcopy = {};
+            $scope.Register = function (product) {
+                angular.copy(product, $scope.productcopy)
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <fieldset>
+        <legend>Register Product</legend>
+        <form>
+            <dl>
+                <dt>Name</dt>
+                <dd><input type="text" ng-model="product.Name"></dd>
+                <dt>Price</dt>
+                <dd><input type="text" ng-model="product.Price"></dd>
+                <dt>Is In Stock</dt>
+                <dd>
+                    <input type="radio" name="stock" ng-model="product.Stock" value="Available">Yes
+                    <input type="radio" name="stock" ng-model="product.Stock" value="Out Of Stock">No
+                </dd>
+            </dl>
+            <br>
+            <button ng-click="Register(product)">Register</button>
+        </form>
+    </fieldset>
+    <br><br>
+    <div>
+        <h2>Product Details</h2>
+        <span>{{productcopy | json}}</span>
+    </div>
+</body>
+</html>

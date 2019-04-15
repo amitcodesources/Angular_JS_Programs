@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service_log_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope, $log) {
+            $scope.$log = $log;
+            $scope.txtName= "";
+            $scope.SubmitClick=function () {
+                if($scope.txtName.length < 4){
+                    $scope.$log.error("Name can't be less than 4 chars");
+                }
+                else if($scope.txtName.length >= 10){
+                    $scope.$log.warn("Name can't be more than 10 chars");
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <h1>AngularJS $log Demo: </h1>
+    <p>Please check the browser console for the logging information.</p><br><br>
+
+    User Name: <input type="text" name="txtName" ng-model="txtName">
+    <button ng-click="SubmitClick()">Submit</button>
+
+
+</body>
+</html>

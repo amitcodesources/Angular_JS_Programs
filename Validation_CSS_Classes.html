@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation_CSS_Classes</title>
+    <style>
+        input.ng-pristine{
+            background-color: yellow;
+        }
+        input.ng-touched.ng-invalid{
+            background-color: red;
+            color: white;
+        }
+        input.ng-touched.ng-valid{
+            background-color: green;
+            color: white;
+        }
+    </style>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+<form name="frmHome" novalidate>
+    <div>
+        User Name
+        <input type="text" name="txtName" ng-model="txtName" required ng-minlength="4">
+        <span ng-if="frmHome.txtName.$error.required">Name Required</span>
+        <span ng-if="frmHome.txtName.$error.minlength">Name too short...min 4 chars</span>
+    </div>
+    <div>
+        Email
+        <input type="email" name="txtEmail" ng-model="txtEmail" required>
+        <span ng-if="frmHome.txtEmail.$error.required">Email Required</span>
+        <span ng-if="frmHome.txtEmail.$error.email">Invalid Email</span>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation_Services_Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+<form name="frmHome" novalidate>
+        <div>
+            User Name
+            <input type="text" name="txtName" ng-model="txtName" required ng-minlength="4" ng-maxlength="15">
+            <span ng-if="frmHome.txtName.$error.required">Name Required</span>
+            <span ng-if="frmHome.txtName.$error.minlength">Name too short...min 4 chars</span>
+            <span ng-if="frmHome.txtName.$error.maxlength">Name too long...max 15 chars</span>
+        </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PwordChechRegExpByMeter_Keyup</title>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.txtPwd = "";
+            $scope.regExp = /(?=.*[A-Z])\w{4, 10}/;
+            $scope.msg="";
+            function ShowGrade(min, max, value, low, high) {
+                $scope.min=min;
+                $scope.max=max;
+                $scope.value=value;
+                $scope.low=low;
+                $scope.high=high;
+            }
+            $scope.CheckPassword = function () {
+                if($scope.txtPwd.match($scope.regExp)){
+                    $scope.msg="Strong Password";
+                    ShowGrade(1, 100, 100, 0, 0);    //Show Green Color
+                }
+                else{
+                    if($scope.txtPwd.length < 4){
+                        $scope.msg="Poor Password";
+                        ShowGrade(1, 100, 100, 60, 80);  //Show Red Color
+                    }
+                else {
+                    $scope.msg="Weak Password";
+                    ShowGrade(1, 100, 100, 40, 80);     //Show Yellow Color
+                }
+                }
+            }
+        })
+    </script>
+</head>
+    <body ng-app="DemoApp" ng-controller="HomeController">
+        <form>
+            <fieldset>
+                <legend>Password</legend>
+                <input type="text" name="txtPwd" ng-model="txtPwd" ng-keyup="CheckPassword()" placeholder="4 to 10 chars with atleast 1 uppercase char">
+                <meter min="{{min}}" max="{{max}}" value="{{value}}" low="{{low}}" high="{{high}}"></meter>
+                <span>{{msg}}</span>
+            </fieldset>
+        </form>
+    </body>
+</html>

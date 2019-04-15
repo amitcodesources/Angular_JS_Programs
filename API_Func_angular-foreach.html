@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API_Func_angular-foreach</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            var product = [{Id:1, Name:"Samsung TV"},
+                            {Id:2, Name:"Mobile"}];
+            $scope.productNames = [];
+            angular.forEach(product, function (values) {
+                $scope.productNames.push(values.Name);
+            })
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <ol>
+        <li ng-repeat="item in productNames">
+            {{item}}
+        </li>
+    </ol>
+</body>
+</html>

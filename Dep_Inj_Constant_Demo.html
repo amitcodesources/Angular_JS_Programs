@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dep_Inj_Constant_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.value('price', 45000);
+        app.constant('isinstock', true);
+        app.controller('HomeController', function ($scope, price, isinstock) {
+            $scope.product = {Id:1, Name:"Samsung TV", Price:price, IsInStock:isinstock};
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <h2>Product Details</h2>
+    ID: {{product.Id}}<br>
+    Name: {{product.Name}}<br>
+    Price: {{product.Price}}<br>
+    IsInStock: {{product.IsInStock}}
+</body>
+</html>

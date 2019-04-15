@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service_http_get_demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope, $http) {
+            $http.get('Home.html')
+            .then( function success() {
+                $scope.msg="Page Found";},
+                function failure() {
+                    $scope.msg="Page Not Found";
+                });
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+{{msg}}
+</body>
+</html>

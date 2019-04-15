@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-reapeat Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+            $scope.Languages =[{Name:'JavaScript', Summary:'JavaScript is a client side script'},
+                {Name:'Angular JS', Summary:'Angular JS is a client side MVC Framework'}];
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        <h2>Languages</h2>
+        <dl ng-repeat="item in Languages">
+            <dt>{{item.Name}}</dt>
+            <dd>{{item.Summary}}</dd>
+        </dl>
+</body>
+</html>

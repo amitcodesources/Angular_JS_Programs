@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation_Messages_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-messages.js"></script>
+    <script>
+        var app=angular.module('DemoApp', ['ngMessages']);
+    </script>
+</head>
+<body ng-app="DemoApp">
+<form name="frmHome" novalidate>
+        <div>
+            User Name
+            <input type="text" name="txtName" ng-model="txtName" required ng-minlength="4">
+            <span ng-messages="frmHome.txtName.$error">
+                <span ng-message="required">Name Required</span>
+                <span ng-message="minlength">Name too short...min 4 chars</span>
+            </span>
+        </div>
+    <div>
+        Email
+        <input type="email" name="txtEmail" ng-model="txtEmail" required>
+        <span ng-messages="frmHome.txtEmail.$error">
+            <span ng-message="required">Email Required</span>
+            <span ng-message="email">Invalid Email</span>
+        </span>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-mousemove_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope) {
+                $scope.x =0;
+                $scope.y =0;
+                $scope.msg="";
+                $scope.GetPosition = function (event) {
+                    $scope.x = event.clientX;
+                    $scope.y = event.clientY;
+                }
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        <div>
+            <img ng-src="Cars/1.jpg" width="600" height="400" ng-mousemove="GetPosition($event)">
+        </div>
+        <div>X={{x}}<br>Y={{y}}<br></div>
+</body>
+</html>

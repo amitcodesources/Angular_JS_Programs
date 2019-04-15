@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>$parent Demo</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
+	<script type="text/javascript">
+		function student($scope){
+			$scope.id = "1";
+		}
+		function address($scope){
+			$scope.id = "2";
+		}
+		
+		var app = angular.module("Demo", []);
+		app.controller("parentctrl", student);
+		app.controller("childctrl", address);
+		app.controller("c", function($scope){
+			$scope.d = $scope.$parent.id; 
+		});
+	</script>
+</head>
+<body ng-app="Demo">
+		<div ng-controller="parentctrl">
+			{{id}}	<br>
+			<div ng-controller="childctrl">
+					Student:- {{id}}	<br>
+					Student:- {{$parent.id}} <br>
+					Address:- {{id}}
+			</div>
+		</div>
+		<br><br><br>
+		<div ng-controller="c">
+				{{d}}
+		</div>
+</body>
+</html>

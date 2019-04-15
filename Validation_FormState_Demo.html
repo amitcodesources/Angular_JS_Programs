@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation_FormState_Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+<form name="frmHome" novalidate>
+<fieldset>
+    <legend>Register</legend>
+    <dl>
+        <dt>User Name</dt>
+        <dd><input type="text" name="txtName" ng-model="txtName"></dd>
+        <dt>Email</dt>
+        <dd><input type="email" name="txtEmail" ng-model="txtEmail"></dd>
+    </dl>
+    <button>Submit</button>
+</fieldset>
+<br><br>
+<fieldset>
+    <legend>Form State Validation</legend>
+    <dl>
+        <dt>No Field Modified Yet - $pristine</dt>
+        <dd>{{frmHome.$pristine}}</dd>
+        <dt>Form Modified - $dirty</dt>
+        <dd>{{frmHome.$dirty}}</dd>
+        <dt>Form Valid - $valid</dt>
+        <dd>{{frmHome.$valid}}</dd>
+        <dt>Form Invalid - $invalid</dt>
+        <dd>{{frmHome.$invalid}}</dd>
+        <dt>Form Submitted - $submitted</dt>
+        <dd>{{frmHome.$submitted}}</dd>
+    </dl>
+</fieldset>
+</form>
+</body>
+</html>

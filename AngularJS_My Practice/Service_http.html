@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service_http</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+
+        myApp.controller("myController", function ($scope, $http) {
+
+            var onSuccess = function (data, status, headers, config) {
+                $scope.data = data;
+            };
+
+            var onError = function (data, status, headers, config) {
+                $scope.error = status;
+            };
+
+            var getReq = {
+                method: 'GET',
+                url: '/demo/getdata',
+                data: { myData: 'This id Dummy data' }
+            };
+
+            $http(getReq).success(onSuccess).error(onError);
+
+            var postReq = {
+                method: 'POST',
+                url: '/demo/submitData',
+                data: { myData: 'test data' }
+            };
+
+            $http(postReq).success(onSuccess).error(onError);
+
+        });
+    </script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myController">
+    Response Data: {{data}} <br />
+    Error: {{error}}
+</div>
+</body>
+</html>

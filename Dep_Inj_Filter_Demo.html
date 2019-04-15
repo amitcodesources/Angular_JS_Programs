@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dep_Inj_Filter_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.filter('SentenceCase', function () {
+            return function (str) {
+                var firstchar = str.charAt(0).toUpperCase();
+                var restchar = str.substring(1).toLowerCase();
+                var sentence = firstchar+restchar;
+                return sentence;
+            }
+        });
+
+        app.filter('CapitalizeCase', function () {
+            return function (str) {
+                str = str.split(" ");
+
+                for (let i = 0, x = str.length; i < x; i++) {
+                    str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+                }
+
+                return str.join(" ");
+            }
+        });
+        app.controller('HomeController', function ($scope) {
+            $scope.msg="welcome to angular js";
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+        SentenceCase:   {{msg | SentenceCase}}<br>
+        CapitalizeCase :    {{msg | CapitalizeCase}}
+</body>
+</html>

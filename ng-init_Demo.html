@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-init Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+        <div ng-init="uname = 'John'">
+            <h2>Initializing String</h2>
+            Hello!{{uname}}
+        </div>
+
+        <div>
+            <h2>Initializing TextBox Value</h2>
+            Your Name: <input type="text" ng-init="username='Amit'" ng-model="username">
+            <br>
+            Hii!{{username}}
+        </div>
+
+        <div ng-init="cities=['Delhi', 'HYD']">
+            <h2>Initializing Array</h2>
+            Cities[0]: {{cities[0]}}<br>
+            Cities[1]: {{cities[1]}}
+        </div>
+
+        <div ng-init="product={id:1, name: 'Samsung TV'}">
+            <h2>Initializing Objects</h2>
+            ProductID : {{product.id}}<br>
+            ProductName: {{product.name}}
+        </div>
+</body>
+</html>

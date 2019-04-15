@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service_interval_Demo</title>
+    <script src="Scripts/angular.js"></script>
+    <script>
+        var app=angular.module('DemoApp', []);
+        app.controller('HomeController', function ($scope, $interval) {
+            $scope.msg = new Date().toLocaleTimeString();
+            var GetTime = function () {
+                $scope.msg = new Date().toLocaleTimeString();
+            };
+            $interval(GetTime, 1000);
+        })
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+    {{msg}}
+</body>
+</html>

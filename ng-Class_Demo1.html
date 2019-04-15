@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-Class</title>
+    <script src="Scripts/angular.js"></script>
+    <style>
+        .backstyle{
+            background-color: yellow;
+        }
+        .textstyle{
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body ng-app>
+    <fieldset>
+        <legend>Apply Styles</legend>
+        Type Style:
+        <input type="text" ng-model="effect" placeholder="Sample: backstyle">
+        <br><br>
+        Select a Style:
+        <select ng-model="effect">
+            <option value="backstyle">Back Style</option>
+            <option value="textstyle">Text Style</option>
+        </select>
+    </fieldset>
+    <br>
+    <h2 ng-class="[effect]">Welcome To Angular JS</h2>
+</body>
+</html>

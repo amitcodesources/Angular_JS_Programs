@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-mouseevents_Demo</title>
+    <script src="Scripts/angular.js"></script>
+</head>
+<body ng-app>
+        <img ng-init="ad='Images/Banners/nareshitcorejava.jpg'" ng-src="{{ad}}" ng-mouseover="ad='Images/Banners/nareshitdevops.jpg'"
+             ng-mouseleave="ad='Images/Banners/nareshitcorejava.jpg'" width="1350" height="300">
+        <p>Move mouse over the image to change advertisement</p>
+
+        <img ng-init="bulb='Images/bulboff.jpg'" ng-src="{{bulb}}" ng-mousedown="bulb='Images/bulbon.jpg'"
+             ng-mouseup="bulb='Images/bulboff.jpg'">
+        <p>Press hold the mouse button to Torn On Bulb</p>
+</body>
+</html>
